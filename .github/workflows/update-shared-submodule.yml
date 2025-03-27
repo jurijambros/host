@@ -28,4 +28,4 @@ jobs:
           cd ..
           git add shared
           git commit -m "Updated shared submodule to latest master"
-          git push origin master
+          git push https://github.com/${{ github.repository }}.git HEAD:master
