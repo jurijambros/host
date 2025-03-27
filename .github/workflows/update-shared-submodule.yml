@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [shared-updated]
 
+permissions:
+  contents: write  # Allows committing and pushing code changes
+  pull-requests: write  # Allows creating and updating PRs (if needed)
+
 jobs:
   update-submodule:
     runs-on: ubuntu-latest
