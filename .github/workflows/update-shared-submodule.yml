@@ -15,6 +15,10 @@ jobs:
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set git config for commits
+        run: |
+          git config user.email "host.repository@gihub.com"
+          git config user.name "host repository"
       - name: Update Submodule to Latest Master
         run: |
           cd shared
