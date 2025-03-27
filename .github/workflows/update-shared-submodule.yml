@@ -1,0 +1,26 @@
+name: Update Shared Submodule
+
+on:
+  repository_dispatch:
+    types: [shared-updated]
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Host Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Submodule to Latest Master
+        run: |
+          cd shared
+          git checkout master
+          git rebase origin master
+          cd ..
+          git add shared
+          git commit -m "Updated shared submodule to latest master"
+          git push origin master
